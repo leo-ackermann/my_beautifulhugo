@@ -15,36 +15,40 @@
     {{ end }}
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <ul class="list-inline text-center footer-links">
-          {{ range .Site.Data.beautifulhugo.social.social_icons }}
-            {{- if isset $.Site.Params.author .id }}
-              <li>
-		{{ if or ( hasPrefix ( index $.Site.Params.author .id ) "http://" ) ( hasPrefix ( index $.Site.Params.author .id ) "https://" ) }}
-		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf "%s" (index $.Site.Params.author .id) }}" title="{{ .title }}">
-		{{ else }}
-		  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Params.author .id) }}" title="{{ .title }}">
-		{{ end }}
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-            {{- end -}}
-          {{ end }}
-          {{ if .Site.Params.rss }}
-          {{ with .OutputFormats.Get "RSS" }}
-          <li>
-            <a href="{{ .RelPermalink }}" title="RSS">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          {{ end }}
-          {{ end }}
-        </ul>
+    <!--     <ul class="list-inline text-center footer-links"> -->
+    <!--       {{ range .Site.Data.beautifulhugo.social.social_icons }} -->
+    <!--         {{- if isset $.Site.Params.author .id }} -->
+    <!--           <li> -->
+		<!-- {{ if or ( hasPrefix ( index $.Site.Params.author .id ) "http://" ) ( hasPrefix ( index $.Site.Params.author .id ) "https://" ) }} -->
+		<!--   <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf "%s" (index $.Site.Params.author .id) }}" title="{{ .title }}"> -->
+		<!-- {{ else }} -->
+		<!--   <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Params.author .id) }}" title="{{ .title }}"> -->
+		<!-- {{ end }} -->
+    <!--               <span class="fa-stack fa-lg"> -->
+    <!--                 <i class="fas fa-circle fa-stack-2x"></i> -->
+    <!--                 <i class="{{ .icon }} fa-stack-1x fa-inverse"></i> -->
+    <!--               </span> -->
+    <!--             </a> -->
+    <!--           </li> -->
+    <!--         {{- end -}} -->
+    <!--       {{ end }} -->
+    <!--       {{ if .Site.Params.rss }} -->
+    <!--       {{ with .OutputFormats.Get "RSS" }} -->
+    <!--       <li> -->
+    <!--         <a href="{{ .RelPermalink }}" title="RSS"> -->
+    <!--           <span class="fa-stack fa-lg"> -->
+    <!--             <i class="fas fa-circle fa-stack-2x"></i> -->
+    <!--             <i class="fas fa-rss fa-stack-1x fa-inverse"></i> -->
+    <!--           </span> -->
+    <!--         </a> -->
+    <!--       </li> -->
+    <!--       {{ end }} -->
+    <!--       {{ end }} -->
+    <!--     </ul> -->
+
+    <p class="credits copyright">
+    <b> This website is still under construction, thank you for your comprehension. </b>
+    </p>
         <p class="credits copyright text-muted">
           {{ if .Site.Params.author.name }}
             {{ if .Site.Params.author.website }}
@@ -54,22 +58,21 @@
             {{ end }}
           {{ end }}
 
-          &nbsp;&bull;&nbsp;&copy;
+          &nbsp;&bull;&nbsp; Last changes:
           {{ if .Site.Params.since }}
-            {{ .Site.Params.since }} - {{ .Site.Lastmod.Format "2006" }}
+            {{ .Site.Params.since }} - {{ .Site.Lastmod.Format "January, 2006" }}
           {{ else }}
-            {{ .Site.Lastmod.Format "2006" }}
+            {{ .Site.Lastmod.Format "January, 2006" }}
           {{ end }}
 
-          {{ if .Site.Title }}
-            &nbsp;&bull;&nbsp;
-            <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
-          {{ end }}
+          <!-- {{ if .Site.Title }} -->
+          <!--   &nbsp;&bull;&nbsp; -->
+          <!--   <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a> -->
+          <!-- {{ end }} -->
         </p>
         <!-- Please don't remove this, keep my open source work credited :) -->
         <p class="credits theme-by text-muted">
-          {{ i18n "poweredBy" . | safeHTML }}
-          {{ if $.GitInfo }}&nbsp;&bull;&nbsp;[<a href="{{ .Site.Params.commit }}{{ .GitInfo.Hash }}">{{ substr .GitInfo.Hash 0 8 }}</a>]{{ end }}
+          Powered by <a href="https://gohugo.io/">Hugo</a> &nbsp;&bull;&nbsp; Theme adapted from <a href="https://github.com/halogenica/beautifulhugo">BeautifulHugo</a>
         </p>
       </div>
     </div>

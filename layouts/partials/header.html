@@ -74,6 +74,29 @@
                 {{ else }}
                   <h2 class="{{ .Type }}-subheading">{{ $subtitle }}</h2>
                 {{ end }}
+
+                  {{ if .IsHome }}
+                  <br>
+                  <ul class="list-inline text-center footer-links">
+                    {{ range .Site.Data.beautifulhugo.social.social_icons }}
+                    {{- if isset $.Site.Params.Author .id }}
+                    <li>
+		                  {{ if or ( hasPrefix ( index $.Site.Params.Author .id ) "http://" ) ( hasPrefix ( index $.Site.Params.Author .id ) "https://" ) }}
+		                  <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf "%s" (index $.Site.Params.Author .id) }}" title="{{ .title }}">
+		                    {{ else }}
+		                    <a {{ if .rel }}rel="{{ .rel }}"{{- end -}} href="{{ printf .url (index $.Site.Params.Author .id) }}" title="{{ .title }}">
+		                      {{ end }}
+                          <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="{{ .icon }} fa-stack-1x fa-inverse" style="color:#fbf1c7"></i>
+                          </span>
+                        </a>
+                    </li>
+                    {{- end -}}
+                    {{ end }}
+                  </ul>
+                  {{ end }}
+
               {{ end }}
               {{ if eq .Type "post" }}
                 {{ partial "post_meta.html" . }}

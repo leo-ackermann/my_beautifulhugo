@@ -1,0 +1,12 @@
+<div class="mosaic-item">
+  <a href="{{ .Get "link" }}" class="mosaic-link">
+    <div class="mosaic-image" style="background-image: url('{{ .Get "img" }}');">
+      <div class="mosaic-overlay">
+        <div class="mosaic-text">
+          <h2>{{ .Get "title" }}</h2>
+          <p>{{ .Get "subtitle" }}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
