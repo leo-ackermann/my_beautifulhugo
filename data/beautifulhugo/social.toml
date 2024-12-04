@@ -226,3 +226,9 @@ id = "bluesky"
 url = "https://bsky.app/profile/%s"
 title = "Bluesky"
 icon = "fab fa-bluesky"
+
+[[social_icons]]
+id = "orcid"
+url = "https://orcid.org/%s"
+title = "OrcID"
+icon = "fab fa-orcid"
